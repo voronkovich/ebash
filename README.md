@@ -1,0 +1,2 @@
+# ebash
+BASH script skeleton

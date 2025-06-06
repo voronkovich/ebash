@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+shopt -s lastpipe nullglob dotglob
+
+declare -r app_name="${0##*/}"
+declare verbose=0
+
+main() {
+    while [[ $# -gt 0 ]]; do
+        case "${1:-}" in
+        --)
+            shift
+            break
+            ;;
+        -h | --help)
+            help
+            ;;
+        -v | --verbose)
+            verbose=1
+            shift
+            ;;
+        -*)
+            unknown_option "${1}"
+            ;;
+        *)
+            break
+            ;;
+        esac
+    done
+
+    if [[ $# -eq 0 ]]; then
+        argument_required 'name'
+    fi
+
+    echo "Hello, ${1:-World}!"
+}
+
+help() {
+    echo -n "Usage: ${app_name} [options] <args>
+
+Options:
+  -h, --help     Show this help message
+  -v, --verbose  Enable verbose output
+"
+    exit 0
+}
+
+unknown_option() {
+    fail "unknown option '${1}'
+Try '${app_name} --help' for more information."
+}
+
+argument_required() {
+    fail "argument required '${1}'
+Try '${app_name} --help' for more information."
+}
+
+fail() {
+    error "${1}"
+    exit "${2:-1}"
+}
+
+error() {
+    echo "${app_name}: ${1}" >&2
+}
+
+main "$@"
