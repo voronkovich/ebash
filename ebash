@@ -30,7 +30,7 @@ main() {
     done
 
     if [[ $# -eq 0 ]]; then
-        argument_required 'name'
+        value_required 'name'
     fi
 
     echo "Hello, ${1:-World}!"
@@ -51,8 +51,8 @@ unknown_option() {
 Try '${app_name} --help' for more information."
 }
 
-argument_required() {
-    fail "argument required '${1}'
+value_required() {
+    fail "value required '${1}'
 Try '${app_name} --help' for more information."
 }
 

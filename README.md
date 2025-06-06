@@ -29,3 +29,14 @@ The script also defines a read-only variable `app_name`. This extracts the base 
 ```sh
 declare -r app_name="${0##*/}"
 ```
+
+## Functions
+
+The script is organized into several functions to improve readability and maintainability:
+
+*   `main`: the primary entry point of the script. It handles argument parsing and the main logic.
+*   `help`: displays the usage information and available options.
+*   `unknown_option`: called when an unrecognized command-line option is provided. Prints an error and exits.
+*   `value_required`: called when a required argument is missing. Prints an error and exits.
+*   `fail`: a utility function to print an error message to standard error and exit with a specified status code (defaults to 1).
+*   `error`: a utility function to print a message to standard error, prefixed with the script name.
