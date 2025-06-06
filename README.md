@@ -21,3 +21,11 @@ shopt -s lastpipe nullglob dotglob
 *   `lastpipe`: if set, and job control is not active, the shell runs the last command of a pipeline in the foreground as a command, rather than in a subshell.
 *   `nullglob`: if set, Bash allows patterns which match no files to expand to a null string, rather than themselves.
 *   `dotglob`: if set, Bash includes filenames beginning with a `.` in the results of pathname expansion.
+
+## Variables
+
+The script also defines a read-only variable `app_name`. This extracts the base name of the script file (e.g., `ebash` if the script is run as `./ebash`) and is used in error and help messages to provide context to the user.
+
+```sh
+declare -r app_name="${0##*/}"
+```
