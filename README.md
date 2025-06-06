@@ -40,3 +40,5 @@ The script is organized into several functions to improve readability and mainta
 *   `value_required`: called when a required argument is missing. Prints an error and exits.
 *   `fail`: a utility function to print an error message to standard error and exit with a specified status code (defaults to 1).
 *   `error`: a utility function to print a message to standard error, prefixed with the script name.
+
+The script uses the [standard GNU error message format](https://www.gnu.org/prep/standards/html_node/Errors.html) (`program: message`) for consistency and ease of parsing by other tools. This format is widely recognized and allows users and automated systems to quickly identify which program generated the error message. It makes error handling and debugging more straightforward.
