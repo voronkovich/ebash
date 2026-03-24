@@ -65,4 +65,8 @@ error() {
     echo "${app_name}: ${1}" >&2
 }
 
+info() {
+    [[ ${verbose} -eq 1 ]] && echo "${1}"
+}
+
 main "$@"
