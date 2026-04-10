@@ -15,9 +15,14 @@ Beyond the template, follow these guidelines for cleaner and safer scripts.
 
 - **Always Use `declare` for Variables**: Explicitly declare all variables using `declare`. Within functions, `declare` (without the `-g` flag) implicitly creates a local variable specific to that function's scope. This practice improves readability, helps prevent unintended global variables, and clarifies variable scope. Use `declare -r` for constants.
 - **Always Quote Variables**: Enclose variable substitutions in double quotes (`"${variable}"`) to prevent unexpected word splitting and filename expansion.
-- **Prefer `[[ ... ]]` for Tests**: Use double brackets (`[[ ... ]]`) for conditional tests. They are more powerful, prevent word splitting, and reduce the risk of errors compared to single brackets (`[ ... ]`).
-- **Use `$(...)` for Command Substitution**: Prefer `$(command)` over backticks (`` `command` ``). It is easier to read and can be nested.
+- **Always Use double brackets (`[[ ... ]]`) for conditional tests**: They are more powerful, prevent word splitting, and reduce the risk of errors compared to single brackets (`[ ... ]`).
+- **Always Use `$(...)` for Command Substitution**: It is easier to read and can be nested. Never use backticks (`` `command` ``).
 - **Use `${...}` for Variables**: Use brace expansion (`${variable}`) to clearly separate variable names from surrounding text and enable more advanced substitutions.
+
+Prefer built-in Bash features over external commands:
+- Use glob operators (`*`, `**`) instead of `find`/`ls`.
+- Use regex matching `[[ $var =~ regex ]]` instead of `grep`/`sed`.
+- Use variable expansion `${var##*/}` instead of `basename`.
 
 ## Creating a New Script
 
