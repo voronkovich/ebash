@@ -18,6 +18,7 @@ Beyond the template, follow these guidelines for cleaner and safer scripts.
 - **Always Use double brackets (`[[ ... ]]`) for conditional tests**: They are more powerful, prevent word splitting, and reduce the risk of errors compared to single brackets (`[ ... ]`).
 - **Always Use `$(...)` for Command Substitution**: It is easier to read and can be nested. Never use backticks (`` `command` ``).
 - **Use `${...}` for Variables**: Use brace expansion (`${variable}`) to clearly separate variable names from surrounding text and enable more advanced substitutions.
+- **Use Semicolons Sparingly**: Only use the semicolon (`;`) when necessary to separate commands on the same line.
 
 Prefer built-in Bash features over external commands:
 - Use glob operators (`*`, `**`) instead of `find`/`ls`.
